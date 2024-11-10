@@ -8,12 +8,18 @@
 	<meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Params.Description }}{{ end }}">
 	{{- if .Site.Params.opengraph }}
 		{{ template "_internal/opengraph.html" . }}
+		{{- partial "ogimage.html" . }}
 	{{- end }}
 	{{- if .Site.Params.schema }}
 		{{ template "_internal/schema.html" . }}
 	{{- end }}
 	{{- if .Site.Params.twitter_cards }}
-		{{ template "_internal/twitter_cards.html" . }}
+		<meta name="twitter:card" content="summary_large_image"/>
+		<meta name="twitter:title" content="{{ .Title }}"/>
+		<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}"/>
+	{{- end }}
+	{{- if .IsPage }}
+		{{- with .Site.Params.fediverseAcct }}<meta name="fediverse:creator" content="{{ . }}"/>{{- end }}
 	{{- end }}
 
 	{{- $googleFontsLink := .Site.Params.googleFontsLink | default "https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" }}
@@ -44,6 +50,8 @@
 	{{- if not $server }}
 		{{ template "_internal/google_analytics.html" . }}
 	{{- end }}
+
+	<link rel="canonical" href="{{ .Permalink }}">
 </head>
 <body class="body">
 	<div class="container container--outer">
