@@ -1323,3 +1323,11 @@ textarea {
 		font-size: .6875rem;
 	}
 }
+
+a.footnote-ref::before {
+	content: "[";
+}
+
+a.footnote-ref::after {
+	content: "]";
+}
