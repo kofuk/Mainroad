@@ -4,12 +4,16 @@ import Header from './header';
 import Article from './article';
 import Pagination from './pagination';
 import Empty from './empty';
+import {useParams} from 'react-router-dom';
 
 type Props = {
 	query: string;
 };
 
 const SearchResult = ({query}: Props) => {
+	const {page} = useParams();
+	const pageNum = Number(page ?? '1');
+
 	const result = {
 		took: 2,
 		count: 2,
@@ -46,7 +50,7 @@ const SearchResult = ({query}: Props) => {
 					<Article key={i}>{hit}</Article>
 				))}
 			</main>
-			<Pagination page={1} totalHit={result.count} hitPerPage={10} onClickNext={() => {}} onClickPrev={() => {}} />
+			<Pagination page={pageNum} totalHit={result.count} hitPerPage={10} />
 		</>
 	);
 };

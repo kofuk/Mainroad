@@ -1,24 +1,24 @@
 import React from 'react';
 
+import {Link} from 'react-router-dom';
+
 type Props = {
 	page: number;
 	totalHit: number;
 	hitPerPage: number;
-	onClickNext: () => void;
-	onClickPrev: () => void;
 };
 
-const Pagination = ({page, totalHit, hitPerPage, onClickNext, onClickPrev}: Props) => {
+const Pagination = ({page, totalHit, hitPerPage}: Props) => {
 	const totalPage = Math.ceil(totalHit / hitPerPage);
 	const left = page != 1 && (
-		<a href="#" className="pagination__item pagination__item-prev btn" onClick={() => onClickPrev()}>
+		<Link to={`/${page - 1}`} className="pagination__item pagination__item-prev btn">
 			«
-		</a>
+		</Link>
 	);
 	const right = page != totalPage && (
-		<a href="#" className="pagination__item pagination__item-next btn" onClick={() => onClickNext()}>
+		<Link to={`/${page + 1}`} className="pagination__item pagination__item-next btn">
 			»
-		</a>
+		</Link>
 	);
 
 	return (
