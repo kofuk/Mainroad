@@ -58,6 +58,7 @@
 		{{ block "header" . }}{{ partial "header.html" . }}{{ end }}
 		<div class="wrapper flex">
 			<div class="primary">
+				<div id="search_result_root"></div>
 			{{ block "main" . }}
 				{{ with .Content }}
 				<div class="content main__content clearfix">
@@ -71,11 +72,6 @@
 		{{ block "footer" . }}{{ partial "footer.html" . }}{{ end }}
 	</div>
 <script async defer src="{{ "js/menu.js" | relURL }}"></script>
-{{ with resources.Get "js/entry.ts" }}
-  {{ $options := dict "targetPath" "js/customize.js" }}
-  {{ $js := resources.Get . | js.Build $options }}
-  <script src="{{ $js.RelPermalink }}"></script>
-{{ end }}
 {{ range .Site.Params.customJS -}}
 <script src="{{ . | relURL }}"></script>
 {{- end }}

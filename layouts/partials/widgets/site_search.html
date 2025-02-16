@@ -1,8 +1,6 @@
-<div class="widget-search widget">
-	<form class="widget-search__form" role="search" id="searchForm">
-		<label>
-			<input class="widget-search__field" type="search" placeholder="{{ T "search_placeholder" }}" value="" name="q" aria-label="{{ T "search_placeholder" }}" id="searchField">
-		</label>
-		<input class="widget-search__submit" type="submit" value="Search">
-	</form>
-</div>
+{{ with resources.Get "js/entry.ts" }}
+  {{ $options := dict "targetPath" "js/site_search.js" }}
+  {{ $js := resources.Get . | js.Build $options }}
+  <script src="{{ $js.RelPermalink }}"></script>
+{{ end }}
+<div class="widget-search widget" id="site_search_root"></div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import Header from './header';
 import Article from './article';
@@ -16,9 +16,33 @@ type Props = {
 
 const SearchResult = ({query}: Props) => {
 	const {page} = useParams();
+
+	useEffect(() => {
+		const isSearchMode = query !== '';
+
+		const mainTag = document.getElementsByTagName('main')[0];
+		const pagination = document.querySelector('.pagination.native') as HTMLElement | null;
+		if (isSearchMode) {
+			mainTag.style.display = 'none';
+			if (pagination) {
+				mainTag.style.display = 'none';
+			}
+		} else {
+			mainTag.style.display = 'unset';
+			if (pagination) {
+				mainTag.style.display = 'unset';
+			}
+		}
+	}, [query]);
+
 	const pageNum = Number(page ?? '1');
 
-	const {data, isLoading, error} = useSWRImmutable(`search-${query}-${page}`, () => fetchSearchResult(query, pageNum));
+	const {data, isLoading, error} = useSWRImmutable(query !== '' ? `search-${query}-${page}` : null, () => fetchSearchResult(query, pageNum));
+
+	if (query === '') {
+		return;
+	}
+
 	if (isLoading) {
 		return <Loading />;
 	}

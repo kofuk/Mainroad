@@ -1,5 +1,5 @@
 {{- if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-<div class="pagination">
+<div class="pagination native">
 	{{- if .Paginator.HasPrev }}
 	<a class="pagination__item pagination__item--prev btn" href="{{ .Paginator.Prev.URL }}">«</a>
 	{{- end }}
