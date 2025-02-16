@@ -4,6 +4,8 @@
   "description": "Responsive, simple, clean and content-focused Hugo theme based on the MH Magazine lite WordPress theme",
   "license": "GPL-2.0",
   "devDependencies": {
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
     "autoprefixer": "^10.4.16",
     "editorconfig-checker": "^5.1.1",
     "eslint": "^8.52.0",
@@ -11,6 +13,7 @@
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-node": "^11.1.0",
     "postcss-cli": "^10.1.0",
+    "prettier": "^3.5.1",
     "stylelint": "^15.11.0",
     "stylelint-order": "^6.0.3"
   },
@@ -23,7 +26,8 @@
     "fix:css": "stylelint static/css/*.css --aei --fix",
     "fix:js": "eslint static/js/*.js --fix",
     "fix": "npm run fix:prefixes && npm run fix:css && npm run fix:js",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "fmt": "prettier --write 'assets/js/**/*.{ts,tsx}'"
   },
   "repository": {
     "type": "git",
@@ -32,5 +36,9 @@
   "bugs": {
     "url": "https://github.com/Vimux/Mainroad/issues"
   },
-  "homepage": "https://github.com/Vimux/Mainroad"
+  "homepage": "https://github.com/Vimux/Mainroad",
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
 }
