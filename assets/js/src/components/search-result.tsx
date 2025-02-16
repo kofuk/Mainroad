@@ -3,6 +3,7 @@ import React from 'react';
 import Header from './header';
 import Article from './article';
 import Pagination from './pagination';
+import Empty from './empty';
 
 type Props = {
 	query: string;
@@ -31,6 +32,10 @@ const SearchResult = ({query}: Props) => {
 			}
 		]
 	};
+
+	if (result.count === 0) {
+		return <Empty />;
+	}
 
 	return (
 		<>
