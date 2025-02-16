@@ -58,6 +58,7 @@
 		{{ block "header" . }}{{ partial "header.html" . }}{{ end }}
 		<div class="wrapper flex">
 			<div class="primary">
+				<div id="search_result_root"></div>
 			{{ block "main" . }}
 				{{ with .Content }}
 				<div class="content main__content clearfix">
