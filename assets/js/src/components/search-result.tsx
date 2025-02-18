@@ -20,7 +20,7 @@ const SearchResult = ({query}: Props) => {
 	useEffect(() => {
 		const isSearchMode = query !== '';
 
-		const mainTag = document.getElementsByTagName('main')[0];
+		const mainTag = document.querySelector('main.main.list') as HTMLElement;
 		const pagination = document.querySelector('.pagination.native') as HTMLElement | null;
 		if (isSearchMode) {
 			mainTag.style.display = 'none';
