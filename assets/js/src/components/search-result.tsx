@@ -25,12 +25,12 @@ const SearchResult = ({query}: Props) => {
 		if (isSearchMode) {
 			mainTag.style.display = 'none';
 			if (pagination) {
-				mainTag.style.display = 'none';
+				pagination.style.display = 'none';
 			}
 		} else {
 			mainTag.style.display = 'unset';
 			if (pagination) {
-				mainTag.style.display = 'unset';
+				pagination.style.display = 'unset';
 			}
 		}
 	}, [query]);
