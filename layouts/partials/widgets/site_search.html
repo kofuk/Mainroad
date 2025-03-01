@@ -1,6 +1,6 @@
+<div class="widget-search widget" id="site_search_root"></div>
 {{ with resources.Get "js/entry.ts" }}
   {{ $options := dict "targetPath" "js/site_search.js" }}
   {{ $js := resources.Get . | js.Build $options }}
-  <script src="{{ $js.RelPermalink }}"></script>
+  <script src="{{ $js.RelPermalink }}" defer></script>
 {{ end }}
-<div class="widget-search widget" id="site_search_root"></div>
